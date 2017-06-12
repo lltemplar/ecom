@@ -1,0 +1,5 @@
+server/.idea
+server/target
+ecom.iml
+web/.vscode
+web/node_modules
