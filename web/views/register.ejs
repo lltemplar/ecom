@@ -41,12 +41,17 @@
         $.ajax({
             url: '/api/v1/register',
             method: 'POST',
-            body: {
+            contentType:"application/json",
+            dataType: "json",
+            data: JSON.stringify({
                 userName: vm.userName,
                 password: vm.password
-            }
+            })
         }).then(function (data) {
             console.log(JSON.stringify(data));
+            if(data.status == "Success"){
+                alert('Congratulations,Regist Successfully!')
+            }
         });
     }
 

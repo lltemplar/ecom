@@ -4,6 +4,7 @@ var config = require('../config');
 module.exports = {
     getRedirect: function (api, res) {
         var url = config.url + api;
+        console.log("get",url);
         request.get(url).on('error', function (err) {
             console.error(err);
             res.status(500);
@@ -12,6 +13,7 @@ module.exports = {
     },
     postRedrect: function (api, req, res) {
         var url = config.url + api;
+        console.log("post",url);
         var option = {
             url: url,
             method: 'POST',
@@ -19,6 +21,7 @@ module.exports = {
             headers: req.headers,
             body: req.body
         };
+        console.log(JSON.stringify(option));
         request(option, function (err, remoteResponse, remoteBody) {
             if (err) {
                 console.error(err);
@@ -38,6 +41,7 @@ module.exports = {
             return;
         }
         var url = config.url + api;
+        console.log("get",url);
         request.get(url, function (err, remoteResponse, remoteBody) {
             if (err) {
                 console.error(err);
@@ -56,6 +60,7 @@ module.exports = {
             return;
         }
         var url = config.url + api;
+        console.log("post",url);
         var option = {
             url: url,
             method: 'POST',

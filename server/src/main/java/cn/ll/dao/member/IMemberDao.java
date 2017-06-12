@@ -1,6 +1,7 @@
 package cn.ll.dao.member;
 
 import cn.ll.bean.member.MemberBasicInfoBean;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
