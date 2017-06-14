@@ -8,5 +8,9 @@
 		<insert id="insertMemberBasicInfo" parameterType="MemberBasicInfoBean">
 			insert into member_info_basic(member_name , member_pwd) values(#{memberName} , #{memberPwd})
 		</insert>
+
+	    <select id="queryMemberBasicInfoByName" resultType="MemberBasicInfoBean">
+			select member_name as 'memberName' from member_info_basic where member_name = #{userName} limit 1
+		</select>
           
 </mapper>

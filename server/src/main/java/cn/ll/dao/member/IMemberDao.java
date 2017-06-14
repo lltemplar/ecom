@@ -18,5 +18,5 @@ public interface IMemberDao {
     public void insertMemberBasicInfo(MemberBasicInfoBean memberBasicInfoBean);
 
 
-    public List<MemberBasicInfoBean> queryAll();
+    public MemberBasicInfoBean queryMemberBasicInfoByName(String userName);
 }
