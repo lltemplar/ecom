@@ -7,4 +7,8 @@ router.get('/', function (req, res, next) {
   res.render('register', { title: 'Register' });
 });
 
+router.post('/', function (req, res, next) {
+  request.postRedrect('/api/v1/member/register',req,res);
+});
+
 module.exports = router;

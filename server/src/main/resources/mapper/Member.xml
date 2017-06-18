@@ -10,7 +10,7 @@
 		</insert>
 
 	    <select id="queryMemberBasicInfoByName" resultType="MemberBasicInfoBean">
-			select member_name as 'memberName' from member_info_basic where member_name = #{userName} limit 1
+			select member_name as 'memberName',member_pwd as 'memberPwd' from member_info_basic where member_name = #{userName} limit 1
 		</select>
           
 </mapper>

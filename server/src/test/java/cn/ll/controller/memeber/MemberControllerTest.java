@@ -32,11 +32,21 @@ public class MemberControllerTest {
     @Test
     @Rollback(true)
     public void register() throws Exception {
-        Map<String, Object> param = new HashMap<String, Object>();
+        Map<String, String> param = new HashMap<String, String>();
         param.put("userName", "TestUser");
         param.put("password", "123123");
         Map<String,String> result = memberController.register(param);
         Assert.assertEquals(result.get("status"),"Success");
+    }
+
+    @Test
+    public void login() throws Exception {
+        Map<String, String> param = new HashMap<String, String>();
+        param.put("userName", "admin");
+        param.put("password", "admin");
+        Map<String,String> result = memberController.login(param);
+        Assert.assertEquals(result.get("status"),"Success");
+        Assert.assertEquals(result.get("msg"),null);
     }
 
 }

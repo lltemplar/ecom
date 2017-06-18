@@ -11,6 +11,9 @@ var config = require('./config.js');
 
 var app = express();
 
+//define whole variables
+app.locals['version'] = config.version || '0.0.1';
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -31,7 +34,7 @@ app.use('/register', require('./routes/register'));
 app.use('/login', require('./routes/login'));
 
 /* rest api */
-app.use('/api/v1/register', require('./rest/register'));
+app.use('/api/v1/register', require('./routes/register'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -45,14 +48,15 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  
   // render the error page
   if (err.status == 404) {
-    res.status(404);
-    res.render('404',{version:config.version});
+    res.status(404);    
+    res.render('404');
   } else {
     res.status(err.status || 500);
-    res.render('error');
+    console.log(JSON.stringify(err));
+    res.render('500');
   }
 
 });
