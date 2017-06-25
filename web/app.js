@@ -55,16 +55,10 @@ app.use(expressSession({
 
 // 登陆拦截
 app.use(function (req, res, next) {
-  console.log(JSON.stringify(req.session.user));
-  var needFilter = true;
-  console.log("req.originalUrl =", req.originalUrl);
-  console.log("req.url =", JSON.stringify(req.url));
   urls.forEach(function (item, index) {
-     console.log("the item is ",JSON.stringify(item));
     if (req.url === item.url && item.needLogin && !req.session.user) {
-      console.log("the item is reached.");
       // 未登录，则重定向到登陆页面
-      return res.redirect('/login');
+      return res.redirect('/login?redirectUrl=' + req.originalUrl);
     }
   });
   next();

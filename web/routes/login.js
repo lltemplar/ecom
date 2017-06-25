@@ -25,9 +25,11 @@ router.post('/', function (req, res, next) {
           res.render('login', { title: 'Login', errorMsg: e.data.msg || 'Invalid userName or password' });
         } else {
           req.session.user = e.data.data;
-          console.log("req.session.user is", JSON.stringify(req.session.user));
+          console.log("req.query is",JSON.stringify(req.originalUrl));
+          var url = req.query['redirectUrl'];
+          console.log("login redirect url is",url);
           // redirect to home page     
-          res.redirect('/');
+          res.redirect(url||'/');
         }
       });
 
