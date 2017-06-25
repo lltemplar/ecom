@@ -4,7 +4,7 @@ var request = require('../lib/request');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Ecom' });
 });
 
 /* GET home page. */

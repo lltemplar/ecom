@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * Created by Administrator on 2017-6-14.
  */
-public class ResultError extends HashMap<String, String> {
+public class ResultError extends HashMap<String, Object> {
     public ResultError() {
         this.put("status", "Error");
         this.put("code", "000");

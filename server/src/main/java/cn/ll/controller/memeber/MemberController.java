@@ -33,7 +33,7 @@ public class MemberController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public @ResponseBody
-    Map<String, String> register(@RequestBody Map<String, String> data) {
+    Map<String, Object> register(@RequestBody Map<String, String> data) {
         MemberBasicInfoBean memberBasicInfoBean = new MemberBasicInfoBean();
         String userName = data.get("userName");
 
@@ -54,7 +54,7 @@ public class MemberController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public @ResponseBody
-    Map<String, String> login(@RequestBody Map<String, String> data) {
+    Map<String, Object> login(@RequestBody Map<String, String> data) {
         MemberBasicInfoBean memberBasicInfoBean = new MemberBasicInfoBean();
         String userName = (String) data.get("userName");
         String password = (String) data.get("password");
@@ -67,7 +67,8 @@ public class MemberController {
             if(StringUtils.isNullOrEmpty(password)){
                 return new ResultError("000", "The password is empty");
             }else if(password.equals(dbpassword)){
-                return new ResultSucess();
+                user.setMemberPwd("");
+                return new ResultSucess().setData(user);
             }else {
                 return new ResultError("001", "The password is wrong");
             }

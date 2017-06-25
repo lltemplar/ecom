@@ -35,7 +35,7 @@ public class MemberControllerTest {
         Map<String, String> param = new HashMap<String, String>();
         param.put("userName", "TestUser");
         param.put("password", "123123");
-        Map<String,String> result = memberController.register(param);
+        Map<String,Object> result = memberController.register(param);
         Assert.assertEquals(result.get("status"),"Success");
     }
 
@@ -44,7 +44,7 @@ public class MemberControllerTest {
         Map<String, String> param = new HashMap<String, String>();
         param.put("userName", "admin");
         param.put("password", "admin");
-        Map<String,String> result = memberController.login(param);
+        Map<String,Object> result = memberController.login(param);
         Assert.assertEquals(result.get("status"),"Success");
         Assert.assertEquals(result.get("msg"),null);
     }

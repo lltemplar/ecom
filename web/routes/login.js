@@ -18,9 +18,19 @@ router.post('/', function (req, res, next) {
     }
   }, function (e) {
     console.log(JSON.stringify(e))
-    if (e.data.status == 'Success') {
-      // redirect to home page
-      res.redirect('/');
+    if (e.data.status == 'Success') {       
+      // set session in response
+      req.session.regenerate(function (err) {
+        if (err) {
+          res.render('login', { title: 'Login', errorMsg: e.data.msg || 'Invalid userName or password' });
+        } else {
+          req.session.user = e.data.data;
+          console.log("req.session.user is", JSON.stringify(req.session.user));
+          // redirect to home page     
+          res.redirect('/');
+        }
+      });
+
     } else {
       res.render('login', { title: 'Login', errorMsg: e.data.msg || 'Invalid userName or password' });
     }
