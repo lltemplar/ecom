@@ -20,8 +20,7 @@ var urls = [
     needLogin: true
   }, {
     url: '/register',
-    route: './routes/register',
-    needLogin: true
+    route: './routes/register'
   }, {
     url: '/login',
     route: './routes/login'    

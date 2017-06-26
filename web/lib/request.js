@@ -1,47 +1,36 @@
 var request = require('request');
 var config = require('../config');
+var proxy = require('http-proxy').createProxyServer({});
+proxy.on('proxyReq', function (proxyReq, req, res, options) {
+    if (req.method == "POST" && req.body) {
+        proxyReq.write(req.body);
+        proxyReq.end();
+    }
+});
+
+proxy.on('error', function (err, req, res) {
+    console.log(JSON.stringify(err));
+    res.status(500);
+});
 
 module.exports = {
-    getRedirect: function (api, res) {
+    forward: function (api, req, res) {
         var url = config.url + api;
-        console.log("get",url);
-        request.get(url).on('error', function (err) {
-            console.error(err);
-            res.status(500);
-            //res.render('error');
-        }).pipe(res);
-    },
-    postRedrect: function (api, req, res) {
-        var url = config.url + api;
-        console.log("post",url);
-        var option = {
-            url: url,
-            method: 'POST',
-            json: true,
-            headers: req.headers,
-            body: req.body
-        };
-        console.log(JSON.stringify(option));
-        request(option, function (err, remoteResponse, remoteBody) {
-            if (err) {
-                console.error(err);
-                res.status(500)
-                res.end('Error');
-            }
-            else {
-                res.set(remoteResponse.headers);
-                res.json(remoteBody);
-            }
-
-        });
-    },
+        if (req.method == "POST") {
+            var data = JSON.stringify(req.body || {});
+            req.body = data;
+        }
+        proxy.web(req, res, {
+            target: url
+        })
+    },   
     get: function (api, callback) {
         if (typeof callback != "function") {
             console.error('callback is not function');
             return;
         }
         var url = config.url + api;
-        console.log("get",url);
+        console.log("get", url);
         request.get(url, function (err, remoteResponse, remoteBody) {
             if (err) {
                 console.error(err);
@@ -60,7 +49,7 @@ module.exports = {
             return;
         }
         var url = config.url + api;
-        console.log("post",url);
+        console.log("post", url);
         var option = {
             url: url,
             method: 'POST',

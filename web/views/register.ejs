@@ -150,6 +150,8 @@
             } else {
               bootbox.alert(data.body.msg);
             }
+          }).catch(function () {
+            $('#reg').button('reset');
           });
 
 
