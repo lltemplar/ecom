@@ -18,7 +18,7 @@ router.post('/', function (req, res, next) {
     }
   }, function (e) {
     console.log(JSON.stringify(e))
-    if (e.data.status == 'Success') {       
+    if (e.data && e.data.status == 'Success') {       
       // set session in response
       req.session.regenerate(function (err) {
         if (err) {

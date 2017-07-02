@@ -1234,7 +1234,6 @@
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button);
-
     </script>
     <!-- Bootstrap 3.3.7 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -1267,19 +1266,20 @@
     <script src="dist/js/demo.js"></script>
 </body>
 <script>
-var vm = new Vue({
-    el:'#main',
-    data:{},
-    methods:{
-        logout:function(){
-            Vue.http.post('/logout').then(function(data){
-                if(data.data = "success"){
-                    location.href = '/login';
-                }
-            });;
+    var vm = new Vue({
+        el: '#main',
+        data: {},
+        methods: {
+            logout: function () {
+                Vue.http.post('/logout').then(function (data) {
+                    if (data.data = "success") {
+                        location.href = '/login';
+                    }
+                });;
+            }
         }
-    }
-});
+    });
+
 </script>
 
 </html>

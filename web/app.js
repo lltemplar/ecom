@@ -24,6 +24,9 @@ var urls = [
   }, {
     url: '/login',
     route: './routes/login'    
+  }, {
+    url: '/personcenter',
+    route: './routes/personcenter'    
   }];
 
 var app = express();
