@@ -1,6 +1,6 @@
 # Introduction
 
-This is a sample project to separate frondend and backend base on Express,SpringMVC and MyBatis.
+This is a sample project to separate frondend and backend base on Express,SpringMVC and MyBatis.xx
 
 ## Web Project
 ### Introduction
