@@ -4,7 +4,7 @@ This is a sample project to separate frondend and backend base on Express,Spring
 
 ## Web Project
 ### Introduction
-Web Project is build by express,include ejs,bootstrap,vue.
+Web Project is build by express,include ejs,bootstrap,vue..
 ### Install
 npm install
 ### Usage
