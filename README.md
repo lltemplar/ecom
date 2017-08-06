@@ -19,4 +19,5 @@ Server Project is run on tomcat to provide Rest API base on SpringMVC and MyBati
 ### Usage
 Register API: http://127.0.0.1:8080/ecom/api/v1/member/register<br/>
 Login API: http://127.0.0.1:8080/ecom/api/v1/member/login<br/>
+Test
 
